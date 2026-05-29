@@ -15,6 +15,7 @@ import Skills from './pages/Dashboard/Skills';
 import PostProject from './pages/Dashboard/PostProject';
 import Contracts from './pages/Dashboard/Contracts';
 import Earnings from './pages/Dashboard/Earnings';
+import Payments from './pages/Dashboard/Payments';
 
 function App() {
   const { user } = useAuth();
@@ -54,7 +55,7 @@ function App() {
           {/* Client Routes */}
           <Route path="/client/post-project" element={user ? <PostProject /> : <Navigate to="/login" replace />} />
           <Route path="/client/contracts" element={user ? <Contracts /> : <Navigate to="/login" replace />} />
-          <Route path="/client/payments" element={user ? <Contracts /> : <Navigate to="/login" replace />} />
+          <Route path="/client/payments" element={user ? <Payments /> : <Navigate to="/login" replace />} />
 
           {/* Dashboard redirect */}
           <Route path="/dashboard" element={<DashboardRedirect />} />
