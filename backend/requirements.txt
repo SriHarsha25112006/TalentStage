@@ -13,3 +13,10 @@ langchain
 langchain-google-genai
 langchain-community
 duckduckgo-search
+motor
+mongomock-motor
+pymongo
+mongomock
+python-multipart
+dnspython
+email-validator
