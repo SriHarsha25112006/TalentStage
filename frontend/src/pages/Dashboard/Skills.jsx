@@ -48,6 +48,8 @@ const renderQuestionText = (text) => {
   });
 };
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
 const Skills = () => {
   const [skillInput, setSkillInput] = useState('Python');
   const [isGenerating, setIsGenerating] = useState(false);
@@ -91,7 +93,7 @@ const Skills = () => {
       const token = getToken();
       if (!token) { setError('You must be logged in to take a test.'); return; }
 
-      const response = await fetch('http://127.0.0.1:8000/api/skills/generate', {
+      const response = await fetch(`${API_BASE_URL}/api/skills/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify({ skill: skillInput })
@@ -131,7 +133,7 @@ const Skills = () => {
       const correct_answers = testData.questions.map(q => q.correct_answer);
       const answersArr = Object.values(answers);
 
-      const response = await fetch('http://127.0.0.1:8000/api/skills/submit', {
+      const response = await fetch(`${API_BASE_URL}/api/skills/submit`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify({ skill: skillInput, answers: answersArr, correct_answers })

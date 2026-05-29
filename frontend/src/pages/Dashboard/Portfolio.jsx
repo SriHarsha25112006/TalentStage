@@ -13,6 +13,8 @@ const CSE_SKILLS = [
   'Blockchain','DevOps','Linux','Git','GraphQL','REST APIs','Microservices'
 ];
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
 const Portfolio = () => {
   const { user } = useAuth();
   const [loading, setLoading] = useState(true);
@@ -40,7 +42,7 @@ const Portfolio = () => {
       const token = localStorage.getItem('token');
       if (!token) return;
       
-      const response = await fetch('http://127.0.0.1:8000/api/portfolio/my-profile', {
+      const response = await fetch(`${API_BASE_URL}/api/portfolio/my-profile`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -78,7 +80,7 @@ const Portfolio = () => {
   const updateProfileOnBackend = async (fields) => {
     try {
       const token = localStorage.getItem('token');
-      await fetch('http://127.0.0.1:8000/api/portfolio/my-profile', {
+      await fetch(`${API_BASE_URL}/api/portfolio/my-profile`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
