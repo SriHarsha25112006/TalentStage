@@ -4,7 +4,10 @@ from core.config import settings
 # Use live MongoDB Atlas in production/cloud, fallback to mock client if URI is not configured
 if settings.MONGO_URI and ("mongodb://" in settings.MONGO_URI or "mongodb+srv://" in settings.MONGO_URI):
     client = AsyncIOMotorClient(settings.MONGO_URI)
-    db = client.get_default_database() or client.talentstage_db
+    try:
+        db = client.get_default_database()
+    except Exception:
+        db = client.talentstage_db
 else:
     from mongomock_motor import AsyncMongoMockClient
     client = AsyncMongoMockClient()
