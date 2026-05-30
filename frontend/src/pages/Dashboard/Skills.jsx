@@ -48,7 +48,18 @@ const renderQuestionText = (text) => {
   });
 };
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+const getBaseURL = () => {
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL;
+  }
+  const hostname = window.location.hostname;
+  if (hostname === 'localhost' || hostname === '127.0.0.1') {
+    return 'http://127.0.0.1:8000';
+  }
+  return 'https://talentstage-backend.onrender.com';
+};
+
+const API_BASE_URL = getBaseURL();
 
 const Skills = () => {
   const [skillInput, setSkillInput] = useState('Python');
