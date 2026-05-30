@@ -1,18 +1,7 @@
 import axios from 'axios';
 
-const getBaseURL = () => {
-  if (import.meta.env.VITE_API_URL) {
-    return import.meta.env.VITE_API_URL;
-  }
-  const hostname = window.location.hostname;
-  if (hostname === 'localhost' || hostname === '127.0.0.1') {
-    return 'http://127.0.0.1:8000';
-  }
-  return 'https://talentstage-backend.onrender.com';
-};
-
 const api = axios.create({
-  baseURL: getBaseURL(),
+  baseURL: 'https://talentstage-backend.onrender.com',
 });
 
 api.interceptors.request.use(

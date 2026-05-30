@@ -13,18 +13,7 @@ const CSE_SKILLS = [
   'Blockchain','DevOps','Linux','Git','GraphQL','REST APIs','Microservices'
 ];
 
-const getBaseURL = () => {
-  if (import.meta.env.VITE_API_URL) {
-    return import.meta.env.VITE_API_URL;
-  }
-  const hostname = window.location.hostname;
-  if (hostname === 'localhost' || hostname === '127.0.0.1') {
-    return 'http://127.0.0.1:8000';
-  }
-  return 'https://talentstage-backend.onrender.com';
-};
-
-const API_BASE_URL = getBaseURL();
+const API_BASE_URL = 'https://talentstage-backend.onrender.com';
 
 const Portfolio = () => {
   const { user } = useAuth();
