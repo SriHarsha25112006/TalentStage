@@ -43,6 +43,7 @@ async def signup(user_in: UserCreate):
         "user_id": user_id,
         "bio": "",
         "skills": [],
+        "badges": [],
         "hourly_rate": 0.0,
         "availability_status": "Available",
         "education": [],

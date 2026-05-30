@@ -5,7 +5,25 @@ import os
 import sys
 
 def run():
-    print("Starting TalentStage...")
+    print("=========================================")
+    print("        TalentStage Control Panel        ")
+    print("=========================================")
+    print("1. Run locally (Start local backend & frontend)")
+    print("2. Open deployed cloud platform (https://talentstage-4uuy.onrender.com)")
+    print("=========================================")
+    
+    try:
+        choice = input("Select an option [1-2, default: 1]: ").strip()
+    except (KeyboardInterrupt, EOFError):
+        print("\nExiting.")
+        sys.exit(0)
+        
+    if choice == "2":
+        print("\nOpening cloud application in browser...")
+        webbrowser.open("https://talentstage-4uuy.onrender.com")
+        sys.exit(0)
+        
+    print("\nStarting TalentStage locally...")
     
     # Paths
     base_dir = os.path.dirname(os.path.abspath(__file__))
